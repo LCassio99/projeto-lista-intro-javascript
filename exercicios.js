@@ -17,28 +17,30 @@ function imprimeMensagem() {
 // EXERCÍCIOS PARA FAZER ------------------------------------------------------------------
 
 // EXERCÍCIO 01
-function calculaAreaRetangulo(altura, largura) {
+function calculaAreaRetangulo() {
   // implemente sua lógica aqui
-  
-  const areaRetangulo = altura * largura
+  altura = Number(prompt('Digite a altura do retangulo:'))
+  largura = Number(prompt('Digite a largura do retangulo:'))
 
-  return areaRetangulo
+  areaRetangulo = altura * largura
 
+  console.log(areaRetangulo)
+
+  return
 }
-
-console.log(calculaAreaRetangulo(8,5))
 
 // EXERCÍCIO 02
-function imprimeIdade(anoAtual, anoNascimento) {
+function imprimeIdade() {
   // implemente sua lógica aqui
-  
-  const idade = anoAtual - anoNascimento
+  anoAtual = Number(prompt('Qual nosso ano atual?'))
+  anoNascimento = Number(prompt('Qual seu ano de nascimento?'))
 
-  return idade
+  idade = anoAtual - anoNascimento
 
+  console.log(idade)
+
+  return
 }
-
-console.log(imprimeIdade(2023,2001))
 
 // EXERCÍCIO 03
 function calculaIMC(peso, altura) {
@@ -50,46 +52,42 @@ function calculaIMC(peso, altura) {
 
 }
 
-console.log(calculaIMC(87,1.7))
+console.log(calculaIMC(87, 1.7))
 
 // EXERCÍCIO 04
-function imprimeInformacoesUsuario(nome, idade, email) {
+function imprimeInformacoesUsuario() {
   // implemente sua lógica aqui
+  let nome = prompt('Digite seu nome:')
+  let idade = prompt('Digite sua idade:')
+  let email = prompt('Digite seu e-mail:')
+  let mensagem = `Meu nome é ${nome}, tenho ${idade} anos, e o meu email é ${email}.`
+  console.log(mensagem)
 
-  const nomeUsuario = 'Luciano'
-  const idadeUsuario = '21'
-  const emailUsuario = 'lucianocassio66@gmail.com'
-
-
-  return `Meu nome é ${nomeUsuario}, tenho ${idadeUsuario} anos, e o meu email é ${email}.`
-
+  return
 }
-
-console.log(imprimeInformacoesUsuario('Luciano','21','lucianocassio66@gmail.com'))
 
 // EXERCÍCIO 05
-function imprimeTresCoresFavoritas(cor1, cor2, cor3) {
+function imprimeTresCoresFavoritas() {
   // implemente sua lógica aqui
+  let coresFavoritas = []
 
-  const listaCores = ['Preto', 'Branco', 'Cinza']
+  for (let i = 1; i <= 3; i++) {
+    let cores = prompt(`Digite as suas 3 cores favoritas ${i}:`)
+    coresFavoritas.push(cores)
+  }
 
-  return listaCores
+  console.log(coresFavoritas)
 
+  return
 }
-
-console.log(imprimeTresCoresFavoritas('Preto','Branco','Cinza'))
 
 // EXERCÍCIO 06
 function retornaStringEmMaiuscula(string) {
   // implemente sua lógica aqui
+  let letraMaiuscula = string.toUpperCase()
 
-  const palavra = 'minúsculo'
-
-  return palavra.toUpperCase()
-
+  return letraMaiuscula
 }
-
-console.log(retornaStringEmMaiuscula('minúsculo'))
 
 // EXERCÍCIO 07
 function calculaIngressosEspetaculo(custo, valorIngresso) {
@@ -101,7 +99,7 @@ function calculaIngressosEspetaculo(custo, valorIngresso) {
 
 }
 
-console.log(calculaIngressosEspetaculo(8000,80))
+console.log(calculaIngressosEspetaculo(8000, 80))
 
 // EXERCÍCIO 08
 function checaStringsMesmoTamanho(string1, string2) {
@@ -113,7 +111,7 @@ function checaStringsMesmoTamanho(string1, string2) {
 
 }
 
-console.log(checaStringsMesmoTamanho('Luciano','Lucius'))
+console.log(checaStringsMesmoTamanho('Luciano', 'Lucius'))
 
 // EXERCÍCIO 09
 function retornaPrimeiroElemento(array) {
@@ -137,60 +135,75 @@ console.log(retornaUltimoElemento(['Preto', 'Branco', 'Cinza', 'azul', 'rosa']))
 // EXERCÍCIO 11
 function trocaPrimeiroEUltimo(array) {
   // implemente sua lógica aqui
+  let primeiroArray = array[0]
+  let ultimoArray = array[array.length - 1]
 
-  return array.reverse()
+  array[0] = ultimoArray
+  array[array.length - 1] = primeiroArray
 
+  return array
 }
-
-console.log(trocaPrimeiroEUltimo(['inicio','meio','fim']))
 
 // EXERCÍCIO 12
 function checaIgualdadeDesconsiderandoCase(string1, string2) {
   // implemente sua lógica aqui
+  let primeiraString = string1.toLowerCase()
+  let segundaString = string2.toLowerCase()
 
-  let checagem = string1 === string2
-
-  return checagem
-
+  return primeiraString === segundaString
 }
-
-console.log(checaIgualdadeDesconsiderandoCase('ola'.toLowerCase(),'OLA'.toLowerCase()))
 
 // EXERCÍCIO 13
-function checaRenovacaoRG(atual, nascimento, emissao) {
+function checaRenovacaoRG() {
   // implemente sua lógica aqui
+  let anoAtual = prompt('Digite o ano atual')
+  let anoNascimento = prompt('Digite o ano de nascimento:')
+  let emissaoRG = prompt('Digite o ano de emissão do RG:')
 
-  const idade = atual - nascimento
-  const renova5Anos = idade <= 20 && atual - emissao >= 5 && atual - emissao <= 9
-  const renova10Anos = idade > 20 && idade < 50 && atual - emissao >= 10 && atual - emissao <= 14
-  const renova15Anos = idade > 50 && atual - emissao >= 15
+  let idade = anoAtual - anoNascimento
+  let periodoDaEmissao = anoAtual - emissaoRG
 
-  return `Renovação 5 anos: ${renova5Anos} \nRenovação 10 anos: ${renova10Anos} \nRenovação 15 anos: ${renova15Anos} `
+  let vaiRenovar = false
 
+  if (idade <= 20){
+    if (periodoDaEmissao >= 5){
+      vaiRenovar = true
+    }
+  }else if (idade <= 50){
+    if (periodoDaEmissao >= 10){
+      vaiRenovar = true
+    }
+  }else {
+    if (periodoDaEmissao >= 15){
+      vaiRenovar = true
+    }
+  }
+
+  console.log(vaiRenovar)
 }
-
-console.log(checaRenovacaoRG(2023,1972,2008))
 
 // EXERCÍCIO 14
 function checaAnoBissexto(ano) {
   // implemente sua lógica aqui
-
-  const anoBissexto = ano % 400 === 0 || ano % 4 === 0
-
-  return anoBissexto
-
+  if ((ano % 400 === 0) || (ano % 4 === 0 && ano % 100 !== 0)){
+    return true
+  } else {
+    return false
+  }
 }
-
-console.log(checaAnoBissexto(2012))
 
 // EXERCÍCIO 15
-function checaValidadeInscricaoLabenu(idade,ensinoMedio,disponibilidade) {
+function checaValidadeInscricaoLabenu() {
   // implemente sua lógica aqui
+  let idade = prompt('Você tem mais de 18 anos? (sim/nao)')
+  let ensinoMedio = prompt('Possui ensino medio completo? (sim/nao)')
+  let disponibilidade = prompt('Você possui disponibilidade exclusiva durante os horários do curso?')
 
-  const validade = idade === 'sim' && ensinoMedio === 'sim' && disponibilidade === 'sim'
+  let valida = false
 
-  return validade
+  if (idade.toLowerCase() === 'sim' && ensinoMedio.toLowerCase() === 'sim' && disponibilidade.toLowerCase() === 'sim'){
+    valida = true
+  }
 
+  console.log(valida)
 }
-
-console.log(checaValidadeInscricaoLabenu('sim','sim','sim'))
